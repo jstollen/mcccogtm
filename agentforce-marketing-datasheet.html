@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agentforce Marketing — Editions & Capabilities</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --sf-navy:    #032D60;
+    --sf-blue:    #0176D3;
+    --sf-sky:     #00A1E0;
+    --sf-orange:  #FE9339;
+    --sf-green:   #2E844A;
+    --sf-surface: #F3F3F3;
+    --sf-muted:   #706E6B;
+    --sf-border:  #DDDBDA;
+    --sf-fg:      #181818;
+    --sf-white:   #FFFFFF;
+    --sf-light-blue: #EAF4FF;
+    --sf-peach:   #FFF3E0;
+    --sf-lavender: #F5F0FF;
+    --sf-mint:    #F0FAF5;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--sf-fg);
+    background: var(--sf-white);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* ── HEADER ── */
+  .page-header {
+    background: linear-gradient(135deg, var(--sf-navy) 0%, #0B4F9B 60%, #0C6EC8 100%);
+    color: white;
+    padding: 56px 40px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .header-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .page-header h1 {
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+  }
+  .page-header h1 span { color: #5BC5F5; }
+  .page-header .subtitle {
+    font-size: 16px;
+    color: rgba(255,255,255,0.8);
+    max-width: 580px;
+    margin: 0 auto 24px;
+  }
+  .header-tags {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .header-tag {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+  .section { padding: 56px 0; }
+  .section-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--sf-navy);
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  .section-sub {
+    text-align: center;
+    color: var(--sf-muted);
+    font-size: 15px;
+    margin-bottom: 40px;
+  }
+
+  /* ── SUITE OVERVIEW BAND ── */
+  .suite-band {
+    background: var(--sf-light-blue);
+    padding: 40px 0;
+    border-top: 3px solid var(--sf-blue);
+    border-bottom: 1px solid #C9E6FF;
+  }
+  .suite-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .suite-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid var(--sf-border);
+    box-shadow: 0 2px 8px rgba(1,118,211,0.08);
+  }
+  .suite-card .sc-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .suite-card h3 { font-size: 14px; font-weight: 700; color: var(--sf-navy); margin-bottom: 4px; }
+  .suite-card .sc-sub { font-size: 11px; color: var(--sf-muted); margin-bottom: 10px; }
+  .suite-card ul { list-style: none; font-size: 12px; }
+  .suite-card ul li { padding: 2px 0; color: var(--sf-fg); display: flex; align-items: flex-start; gap: 6px; }
+  .suite-card ul li::before { content: '·'; color: var(--sf-blue); font-weight: 700; flex-shrink: 0; }
+
+  .sc-mcn  .sc-icon { background: #EAF4FF; }
+  .sc-mce  .sc-icon { background: #E8F5E9; }
+  .sc-sp   .sc-icon { background: #F5F0FF; }
+  .sc-mi   .sc-icon { background: #FFF3E0; }
+
+  /* ── EDITION CARDS ── */
+  .edition-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  .edition-card {
+    border: 1px solid var(--sf-border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  }
+  .edition-card.featured { border-color: var(--sf-blue); box-shadow: 0 4px 24px rgba(1,118,211,0.15); }
+  .edition-header {
+    padding: 24px 24px 20px;
+    background: var(--sf-surface);
+  }
+  .edition-card.featured .edition-header { background: linear-gradient(135deg, #EAF4FF, #dceffe); }
+  .edition-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  .badge-growth { background: #E8F5E9; color: #2E844A; }
+  .badge-advanced { background: #EAF4FF; color: var(--sf-blue); }
+  .edition-header h3 { font-size: 22px; font-weight: 700; color: var(--sf-navy); margin-bottom: 2px; }
+  .edition-header .price { font-size: 32px; font-weight: 700; color: var(--sf-navy); margin: 8px 0 2px; }
+  .edition-header .price span { font-size: 14px; font-weight: 500; color: var(--sf-muted); }
+  .edition-header .price-note { font-size: 12px; color: var(--sf-muted); }
+  .edition-credits {
+    display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px;
+  }
+  .credit-chip {
+    background: white;
+    border: 1px solid var(--sf-border);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--sf-fg);
+  }
+  .edition-body { padding: 20px 24px; }
+  .feat-section { margin-bottom: 16px; }
+  .feat-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--sf-muted); margin-bottom: 8px; padding-bottom: 4px;
+    border-bottom: 1px solid var(--sf-border);
+  }
+  .feat-grid { display: flex; flex-wrap: wrap; gap: 6px; }
+  .feat-chip {
+    background: var(--sf-surface);
+    border: 1px solid var(--sf-border);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--sf-fg);
+  }
+  .feat-chip.adv {
+    background: #EAF4FF;
+    border-color: #9EC7FF;
+    color: var(--sf-blue);
+  }
+  .feat-chip.agent {
+    background: #1A1A2E;
+    border-color: #3A3A5C;
+    color: #A8D8F8;
+    font-size: 11px;
+  }
+  .feat-chip .star { color: var(--sf-orange); margin-left: 2px; }
+
+  /* ── COMPARISON TABLE ── */
+  .comp-table-wrap { overflow-x: auto; }
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .comp-table thead th {
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--sf-navy);
+    border-bottom: 2px solid var(--sf-blue);
+    background: var(--sf-white);
+  }
+  .comp-table thead th:not(:first-child) { text-align: center; }
+  .comp-table thead th.th-growth { background: #F0FAF5; }
+  .comp-table thead th.th-advanced { background: #EAF4FF; }
+  .comp-table .cat-row td {
+    background: var(--sf-surface);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sf-muted);
+    padding: 8px 16px;
+    border-top: 1px solid var(--sf-border);
+  }
+  .comp-table tbody tr:not(.cat-row):hover { background: #f8fbff; }
+  .comp-table tbody td {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--sf-border);
+    vertical-align: middle;
+  }
+  .comp-table tbody td:not(:first-child) { text-align: center; }
+  .check { color: var(--sf-green); font-size: 16px; }
+  .check-adv { color: var(--sf-blue); font-size: 16px; }
+  .dash { color: #C5C5C5; }
+  .feat-name { font-weight: 500; color: var(--sf-fg); }
+  .feat-name small { display: block; font-size: 11px; color: var(--sf-muted); font-weight: 400; margin-top: 1px; }
+
+  /* ── PRODUCT CARDS (SP & MI) ── */
+  .product-section { padding: 56px 0; }
+  .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .product-card {
+    border: 1px solid var(--sf-border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .product-header {
+    padding: 28px 28px 24px;
+    position: relative;
+  }
+  .product-header.sp { background: linear-gradient(135deg, #F5F0FF, #EAE0FF); border-bottom: 2px solid #C4A3E0; }
+  .product-header.mi { background: linear-gradient(135deg, #FFF3E0, #FFE8C0); border-bottom: 2px solid #FFB74D; }
+  .product-header h3 { font-size: 20px; font-weight: 700; color: var(--sf-navy); margin-bottom: 2px; }
+  .product-header .formerly { font-size: 11px; color: var(--sf-muted); margin-bottom: 14px; }
+  .tier-row { display: flex; gap: 12px; }
+  .tier-box {
+    flex: 1;
+    background: white;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.1);
+    padding: 14px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  }
+  .tier-box.highlight { border-color: var(--sf-orange); box-shadow: 0 2px 12px rgba(254,147,57,0.18); }
+  .tier-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sf-muted); margin-bottom: 4px; }
+  .tier-name { font-size: 14px; font-weight: 700; color: var(--sf-navy); margin-bottom: 6px; }
+  .tier-price { font-size: 22px; font-weight: 700; color: var(--sf-navy); }
+  .tier-price span { font-size: 12px; font-weight: 400; color: var(--sf-muted); }
+  .product-body { padding: 20px 28px; }
+  .product-feat-section { margin-bottom: 16px; }
+  .product-feat-section .feat-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sf-muted); margin-bottom: 8px; padding-bottom: 4px; border-bottom: 1px solid var(--sf-border); }
+  .pill-list { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pill {
+    background: var(--sf-surface);
+    border: 1px solid var(--sf-border);
+    border-radius: 20px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--sf-fg);
+  }
+  .pill.bridge {
+    background: white;
+    border: 1px solid var(--sf-blue);
+    color: var(--sf-blue);
+    font-weight: 600;
+  }
+
+  /* ── BRIDGE EDITIONS ── */
+  .bridge-section {
+    background: var(--sf-surface);
+    padding: 48px 0;
+    border-top: 1px solid var(--sf-border);
+    border-bottom: 1px solid var(--sf-border);
+  }
+  .bridge-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .bridge-card {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid var(--sf-border);
+    padding: 18px;
+  }
+  .bridge-card h4 { font-size: 14px; font-weight: 700; color: var(--sf-navy); margin-bottom: 4px; }
+  .bridge-card .bc-arrow { font-size: 11px; color: var(--sf-blue); font-weight: 600; margin-bottom: 8px; }
+  .bridge-card p { font-size: 12px; color: var(--sf-muted); line-height: 1.5; }
+
+  /* ── SHARED FOUNDATIONS ── */
+  .foundations-section {
+    background: var(--sf-navy);
+    color: white;
+    padding: 40px 0;
+  }
+  .foundations-section .section-title { color: white; font-size: 18px; margin-bottom: 24px; }
+  .found-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+  .found-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px;
+    padding: 16px;
+  }
+  .found-card h5 { font-size: 12px; font-weight: 700; color: #A8D8F8; margin-bottom: 8px; }
+  .found-card ul { list-style: none; font-size: 11px; color: rgba(255,255,255,0.75); }
+  .found-card ul li { padding: 2px 0; }
+
+  /* ── MOUNTAIN FOOTER ── */
+  .mountain-footer {
+    position: relative;
+    padding-top: 0;
+    overflow: hidden;
+    background: white;
+  }
+  .mountain-svg { display: block; width: 100%; }
+  .footer-cta-band {
+    background: linear-gradient(180deg, #EAF4FF 0%, white 100%);
+    padding: 48px 32px;
+    text-align: center;
+  }
+  .footer-cta-band h2 { font-size: 26px; font-weight: 700; color: var(--sf-navy); margin-bottom: 12px; }
+  .footer-cta-band p { color: var(--sf-muted); margin-bottom: 24px; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--sf-blue);
+    color: white;
+    border: none;
+    border-radius: 24px;
+    padding: 12px 28px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-secondary {
+    background: white;
+    color: var(--sf-blue);
+    border: 2px solid var(--sf-blue);
+    border-radius: 24px;
+    padding: 10px 28px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .sf-footer {
+    background: var(--sf-navy);
+    color: rgba(255,255,255,0.6);
+    padding: 20px 32px;
+    text-align: center;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .sf-footer .sf-logo { color: white; font-weight: 700; font-size: 16px; }
+  .sf-footer .disclaimer { max-width: 700px; }
+
+  /* ── MISC ── */
+  .divider { border: none; border-top: 1px solid var(--sf-border); margin: 0; }
+  .note-bar {
+    background: #FFF8EE;
+    border-left: 4px solid var(--sf-orange);
+    padding: 12px 20px;
+    border-radius: 0 8px 8px 0;
+    font-size: 12px;
+    color: #5A3E00;
+    margin-top: 20px;
+  }
+  .note-bar strong { color: #8B5000; }
+
+  @media print {
+    body { font-size: 12px; }
+    .page-header h1 { font-size: 30px; }
+    .section { padding: 32px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="page-header">
+  <div class="header-badge">Capabilities &amp; Editions Reference · June 2026</div>
+  <h1>Agentforce <span>Marketing</span></h1>
+  <p class="subtitle">The complete agentic marketing suite — built natively on Salesforce. Choose your entry point, then extend.</p>
+  <div class="header-tags">
+    <span class="header-tag">Marketing Cloud Next</span>
+    <span class="header-tag">Salesforce Personalization</span>
+    <span class="header-tag">Marketing Intelligence</span>
+    <span class="header-tag">MCE Bridge+</span>
+    <span class="header-tag">MCAE Bridge+</span>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     SUITE OVERVIEW BAND
+══════════════════════════════════════════ -->
+<div class="suite-band">
+  <div class="container">
+    <div class="suite-grid">
+      <div class="suite-card sc-mcn">
+        <div class="sc-icon">🚀</div>
+        <h3>Marketing Cloud Next</h3>
+        <div class="sc-sub">Next-gen platform (GA) · Built on Salesforce Core</div>
+        <ul>
+          <li>Flow Builder &amp; Journey Decisioning</li>
+          <li>Campaign Creation &amp; Live Agents</li>
+          <li>Data 360 native (DMOs, Segments)</li>
+          <li>Business Units · Brand Center</li>
+          <li>Conversational Email / SMS / WhatsApp</li>
+        </ul>
+      </div>
+      <div class="suite-card sc-mce">
+        <div class="sc-icon">📧</div>
+        <h3>MC Engagement / MCAE</h3>
+        <div class="sc-sub">Established products (GA) · ExactTarget &amp; Pardot infra</div>
+        <ul>
+          <li>Journey Builder · Automation Studio</li>
+          <li>Content Builder · AMPScript</li>
+          <li>B2B CRM-native (MCAE / Pardot)</li>
+          <li>Lead Scoring · Lifecycle Stages</li>
+          <li>MCE MCP server layer</li>
+        </ul>
+      </div>
+      <div class="suite-card sc-sp">
+        <div class="sc-icon">🎯</div>
+        <h3>Salesforce Personalization</h3>
+        <div class="sc-sub">Decisioning &amp; analytics (GA) · formerly Evergage</div>
+        <ul>
+          <li>Einstein Decisions · A/B Testing</li>
+          <li>Web, Mobile App &amp; Email Personalization</li>
+          <li>Product Recommendations</li>
+          <li>Behavioral Signals · Sitemap/Event API</li>
+          <li>Agentforce Decisioning Framework</li>
+        </ul>
+      </div>
+      <div class="suite-card sc-mi">
+        <div class="sc-icon">📊</div>
+        <h3>Marketing Intelligence</h3>
+        <div class="sc-sub">Analytics (GA) · formerly Datorama · Tableau Next UI</div>
+        <ul>
+          <li>Cross-channel connectors</li>
+          <li>Revenue Analytics · Campaign KPIs</li>
+          <li>Paid media reporting &amp; optimization</li>
+          <li>Custom data modeling</li>
+          <li>Tableau Next visualization engine</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     MC NEXT EDITIONS
+══════════════════════════════════════════ -->
+<div class="section">
+  <div class="container">
+    <h2 class="section-title">Marketing Cloud Next Editions</h2>
+    <p class="section-sub">Both editions run natively on Salesforce platform — no separate ExactTarget infrastructure.</p>
+
+    <div class="edition-grid">
+      <!-- GROWTH -->
+      <div class="edition-card">
+        <div class="edition-header">
+          <div class="edition-badge badge-growth">Growth Edition</div>
+          <h3>Marketing Cloud<br>Growth</h3>
+          <div class="price">$18,000 <span>/ org / year</span></div>
+          <div class="price-note">180K Email Credits &nbsp;·&nbsp; 500 Active Flows</div>
+          <div class="edition-credits">
+            <span class="credit-chip">200K Flex Credits</span>
+            <span class="credit-chip">1 TB Data 360 storage</span>
+            <span class="credit-chip">Foundations required</span>
+          </div>
+        </div>
+        <div class="edition-body">
+          <div class="feat-section">
+            <div class="feat-label">Orchestration &amp; Journeys</div>
+            <div class="feat-grid">
+              <span class="feat-chip">Flow Builder (Core Journeys)</span>
+              <span class="feat-chip">Journey Decisioning</span>
+              <span class="feat-chip">Marketing Objects</span>
+              <span class="feat-chip">Two-way campaign flows</span>
+            </div>
+          </div>
+          <div class="feat-section">
+            <div class="feat-label">Org Structure</div>
+            <div class="feat-grid">
+              <span class="feat-chip">Business Units (up to 50)</span>
+              <span class="feat-chip">Data Spaces (per BU)</span>
+              <span class="feat-chip">Brand Center Settings</span>
+            </div>
+          </div>
+          <div class="feat-section">
+            <div class="feat-label">Data &amp; Dynamic Content</div>
+            <div class="feat-grid">
+              <span class="feat-chip">Data 360 native (DMOs)</span>
+              <span class="feat-chip">Unified profile</span>
+              <span class="feat-chip">Segments from Data Cloud</span>
+              <span class="feat-chip">CSV / Flat File Upload</span>
+            </div>
+          </div>
+          <div class="feat-section">
+            <div class="feat-label">Einstein (BU-aware)</div>
+            <div class="feat-grid">
+              <span class="feat-chip">Einstein STO</span>
+              <span class="feat-chip">Engagement Scoring</span>
+            </div>
+          </div>
+          <div class="feat-section">
+            <div class="feat-label">Live Agents — GA</div>
+            <div class="feat-grid">
+              <span class="feat-chip agent">Campaign Creation Agent</span>
+              <span class="feat-chip agent">Default Agent (Conv. Email)</span>
+              <span class="feat-chip agent">Agentforce Coworker</span>
+              <span class="feat-chip agent">Agentforce in Slack</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADVANCED -->
+      <div class="edition-card featured">
+        <div class="edition-header">
+          <div class="edition-badge badge-advanced">Advanced Edition</div>
+          <h3>Marketing Cloud<br>Advanced</h3>
+          <div class="price">$39,000 <span>/ org / year</span></div>
+          <div class="price-note">360K Email Credits &nbsp;·&nbsp; 750 Active Flows</div>
+          <div class="edition-credits">
+            <span class="credit-chip">200K Flex Credits</span>
+            <span class="credit-chip">1 TB Data 360 storage</span>
+            <span class="credit-chip">Everything in Growth +</span>
+          </div>
+        </div>
+        <div class="edition-body">
+          <div class="feat-section">
+            <div class="feat-label">Orchestration &amp; Journeys</div>
+            <div class="feat-grid">
+              <span class="feat-chip">Flow Builder (Core Journeys)</span>
+              <span class="feat-chip">Journey Decisioning</span>
+              <span class="feat-chip">Marketing Objects</span>
+              <span class="feat-chip">Two-way campaign flows</span>
+            </div>
+          </div>
+          <div class="feat-section">
+            <div class="feat-label">Advanced Edition Only ★</div>
+            <div class="feat-grid">
+              <span class="feat-chip adv">Conversational Email ★</span>
+              <span class="feat-chip adv">Two-way SMS / WhatsApp ★</span>
+              <span class="feat-chip adv">RCS — North America GA ★</span>
+              <span class="feat-chip adv">Path Experimentation ★</span>
+            </div>
+          </div>
+          <div class="feat-section">
+            <div class="feat-label">Org Structure</div>
+            <div class="feat-grid">
+              <span class="feat-chip">Business Units (up to 50)</span>
+              <span class="feat-chip">Data Spaces (per BU)</span>
+              <span class="feat-chip">Brand Center Settings</span>
+            </div>
+          </div>
+          <div class="feat-section">
+            <div class="feat-label">Data &amp; Dynamic Content</div>
+            <div class="feat-grid">
+              <span class="feat-chip">Data 360 native (DMOs)</span>
+              <span class="feat-chip">Unified profile — no Data Extensions</span>
+              <span class="feat-chip">Segments from Data Cloud</span>
+              <span class="feat-chip">CSV / Flat File Upload</span>
+              <span class="feat-chip adv">Localization blocks ★</span>
+            </div>
+          </div>
+          <div class="feat-section">
+            <div class="feat-label">Live Agents — GA</div>
+            <div class="feat-grid">
+              <span class="feat-chip agent">Campaign Creation Agent</span>
+              <span class="feat-chip agent">Default Agent (Conv. Email)</span>
+              <span class="feat-chip agent">Agentforce Coworker</span>
+              <span class="feat-chip agent">Agentforce in Slack</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note-bar">
+      <strong>Foundations Required:</strong> All MC Next customers must enable Salesforce Foundations (SKU 200008744) + Flex Credits (SKU 200004650) to access Agentforce capabilities. Customers on MC Next before 10/24/2025 may use Einstein Request Credits until renewal, then switch to Flex Credits.
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     FEATURE COMPARISON TABLE
+══════════════════════════════════════════ -->
+<div style="background: var(--sf-surface); padding: 56px 0;">
+  <div class="container">
+    <h2 class="section-title">Compare Top Features</h2>
+    <p class="section-sub">★ = Advanced Edition only &nbsp;·&nbsp; Outlined chip = new framework area</p>
+    <div class="comp-table-wrap">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th style="width:44%">Feature</th>
+            <th class="th-growth" style="width:28%">Growth<br><small style="font-weight:500;color:#555">$18,000 / org / yr</small></th>
+            <th class="th-advanced" style="width:28%">Advanced<br><small style="font-weight:500;color:#555">$39,000 / org / yr</small></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="cat-row"><td colspan="3">Orchestration &amp; Journeys</td></tr>
+          <tr><td class="feat-name">Flow Builder (Core Journeys)</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td></tr>
+          <tr><td class="feat-name">Journey Decisioning</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td></tr>
+          <tr><td class="feat-name">Marketing Objects</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td></tr>
+          <tr><td class="feat-name">Two-way campaign flows</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td></tr>
+          <tr><td class="feat-name">Path Experimentation <small>A/B/n for flow journeys</small></td><td><span class="dash">—</span></td><td><span class="check-adv">✔ ★</span></td></tr>
+
+          <tr class="cat-row"><td colspan="3">Channels</td></tr>
+          <tr><td class="feat-name">Email Studio (via Flow Builder)</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td></tr>
+          <tr><td class="feat-name">Two-way SMS / WhatsApp</td><td><span class="dash">—</span></td><td><span class="check-adv">✔ ★</span></td></tr>
+          <tr><td class="feat-name">RCS — North America</td><td><span class="dash">—</span></td><td><span class="check-adv">✔ ★ GA</span></td></tr>
+          <tr><td class="feat-name">Conversational Email <small>Two-way reply flows</small></td><td><span class="dash">—</span></td><td><span class="check-adv">✔ ★</span></td></tr>
+
+          <tr class="cat-row"><td colspan="3">Org Structure</td></tr>
+          <tr><td class="feat-name">Business Units <small>Up to 50 BUs per org</small></td><td><span class="check">✔</span></td><td><span class="check">✔</span></td></tr>
+          <tr><td class="feat-name">Data Spaces <small>One per BU</small></td><td><span class="check">✔</span></td><td><span class="check">✔</span></td></tr>
+          <tr><td class="feat-name">Brand Center &amp; Center Settings</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td></tr>
+
+          <tr class="cat-row"><td colspan="3">Data &amp; Dynamic Content</td></tr>
+          <tr><td class="feat-name">Data 360 native (DMOs) <small>No Data Extensions needed</small></td><td><span class="check">✔</span></td><td><span class="check">✔</span></td></tr>
+          <tr><td class="feat-name">Unified profile</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td></tr>
+          <tr><td class="feat-name">Segments from Data Cloud</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td></tr>
+          <tr><td class="feat-name">CSV / Flat File Upload <small>Dynamic rules, localization blocks</small></td><td><span class="check">✔</span></td><td><span class="check">✔</span></td></tr>
+          <tr><td class="feat-name">Localization blocks</td><td><span class="dash">—</span></td><td><span class="check-adv">✔ ★</span></td></tr>
+
+          <tr class="cat-row"><td colspan="3">Einstein &amp; AI</td></tr>
+          <tr><td class="feat-name">Einstein STO <small>Send Time Optimization</small></td><td><span class="check">✔</span></td><td><span class="check">✔</span></td></tr>
+          <tr><td class="feat-name">Engagement Scoring</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td></tr>
+
+          <tr class="cat-row"><td colspan="3">Live Agents (GA — June 2026)</td></tr>
+          <tr><td class="feat-name">Campaign Creation Agent</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td></tr>
+          <tr><td class="feat-name">Default Agent (Conversational Email)</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td></tr>
+          <tr><td class="feat-name">Agentforce Coworker</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td></tr>
+          <tr><td class="feat-name">Agentforce in Slack</td><td><span class="check">✔</span></td><td><span class="check">✔</span></td></tr>
+
+          <tr class="cat-row"><td colspan="3">Credits &amp; Entitlements</td></tr>
+          <tr><td class="feat-name">Email Credits (included)</td><td>180,000 / yr</td><td>360,000 / yr</td></tr>
+          <tr><td class="feat-name">Active Flows (included)</td><td>500</td><td>750</td></tr>
+          <tr><td class="feat-name">Flex Credits (with Foundations)</td><td>200,000</td><td>200,000</td></tr>
+          <tr><td class="feat-name">Data 360 storage credits</td><td>1 TB</td><td>1 TB</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PERSONALIZATION + INTELLIGENCE
+══════════════════════════════════════════ -->
+<div class="section">
+  <div class="container">
+    <h2 class="section-title">Decisioning &amp; Analytics Add-Ons</h2>
+    <p class="section-sub">Extend any Agentforce Marketing deployment with real-time personalization and cross-channel intelligence.</p>
+
+    <div class="product-grid">
+
+      <!-- SALESFORCE PERSONALIZATION -->
+      <div class="product-card">
+        <div class="product-header sp">
+          <h3>Salesforce Personalization</h3>
+          <div class="formerly">formerly Interaction Studio · formerly Evergage</div>
+          <div class="tier-row">
+            <div class="tier-box">
+              <div class="tier-label">Base SKU</div>
+              <div class="tier-name">Salesforce Personalization</div>
+              <div class="tier-price">$8,000 <span>/ org / mo</span></div>
+            </div>
+            <div class="tier-box highlight">
+              <div class="tier-label">Plus SKU</div>
+              <div class="tier-name">MC Cloud Personalization+</div>
+              <div class="tier-price">$15,000 <span>/ org / mo</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-feat-section">
+            <div class="feat-label">Core Capabilities</div>
+            <div class="pill-list">
+              <span class="pill">Einstein Decisions</span>
+              <span class="pill">Web Personalization</span>
+              <span class="pill">Product Recommendations</span>
+              <span class="pill">Behavioral Signals</span>
+              <span class="pill">A/B Testing</span>
+              <span class="pill">Sitemap / Event API</span>
+              <span class="pill">Triggered Campaigns</span>
+              <span class="pill">Mobile App Personalization</span>
+              <span class="pill">AI-Objective Based Recommendations</span>
+            </div>
+          </div>
+          <div class="product-feat-section">
+            <div class="feat-label">Bridge / Add-Ons</div>
+            <div class="pill-list">
+              <span class="pill bridge">Personalization+</span>
+              <span class="pill bridge">Agentforce Decisioning Framework</span>
+            </div>
+          </div>
+          <div class="product-feat-section">
+            <div class="feat-label">Requirements</div>
+            <div class="pill-list">
+              <span class="pill">Data 360 required for all SP use cases</span>
+              <span class="pill">Personalization Cards: $750 / 1M decisions</span>
+            </div>
+          </div>
+          <div class="product-feat-section">
+            <div class="feat-label">Personalization+ Bridge Details</div>
+            <div class="pill-list">
+              <span class="pill">Layers Agentforce-driven personalization over MCP</span>
+              <span class="pill">MCP → Agentforce bridge</span>
+              <span class="pill">No double-pay for existing MCP customers</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MARKETING INTELLIGENCE -->
+      <div class="product-card">
+        <div class="product-header mi">
+          <h3>Marketing Intelligence</h3>
+          <div class="formerly">formerly Datorama · semantic data engine layered with Tableau Next UI</div>
+          <div class="tier-row">
+            <div class="tier-box">
+              <div class="tier-label">MI (On-Core)</div>
+              <div class="tier-name">Marketing Intelligence</div>
+              <div class="tier-price">$10,000 <span>/ org / mo</span></div>
+            </div>
+            <div class="tier-box highlight">
+              <div class="tier-label">MCI+ (Both)</div>
+              <div class="tier-name">Marketing Cloud Intelligence+</div>
+              <div class="tier-price">$11,000 <span>/ org / mo</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-feat-section">
+            <div class="feat-label">Core Capabilities</div>
+            <div class="pill-list">
+              <span class="pill">Cross-channel connectors</span>
+              <span class="pill">Revenue Analytics</span>
+              <span class="pill">Campaign KPI dashboards</span>
+              <span class="pill">Paid media reporting</span>
+              <span class="pill">Custom data modeling</span>
+              <span class="pill">Pre-built Marketing Data Model</span>
+              <span class="pill">Agentforce Paid Media Optimization</span>
+              <span class="pill">Multi-touch attribution (U-shaped, linear, time-decay)</span>
+            </div>
+          </div>
+          <div class="product-feat-section">
+            <div class="feat-label">Core Visual Layer</div>
+            <div class="pill-list">
+              <span class="pill">Tableau Next visualization engine</span>
+              <span class="pill">20 TN creator users included</span>
+              <span class="pill">100 TN viewer licenses included</span>
+            </div>
+          </div>
+          <div class="product-feat-section">
+            <div class="feat-label">Bridge / Add-Ons</div>
+            <div class="pill-list">
+              <span class="pill bridge">Intelligence+ AI summary layouts</span>
+              <span class="pill bridge">Paid media optimization loops</span>
+            </div>
+          </div>
+          <div class="product-feat-section">
+            <div class="feat-label">MCI vs. MI vs. MCI+</div>
+            <div class="pill-list">
+              <span class="pill">MCI: legacy Datorama — no EOL planned</span>
+              <span class="pill">MI: new on-Core build — lead with this</span>
+              <span class="pill">MCI+: gives access to both in one SKU</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     BRIDGE EDITIONS
+══════════════════════════════════════════ -->
+<div class="bridge-section">
+  <div class="container">
+    <h2 class="section-title" style="font-size:22px;margin-bottom:8px;">Bridge+ Editions</h2>
+    <p class="section-sub" style="margin-bottom:28px;">Connect existing MCE / MCAE setups to the MC Next platform layer</p>
+    <div class="bridge-grid">
+      <div class="bridge-card">
+        <h4>Engagement+</h4>
+        <div class="bc-arrow">MCE → MCN Interop</div>
+        <p>Layers MCN agentic campaign creation and Conversational Email on existing MCE automation setups. Journey Builder tenant remains fully operational.</p>
+      </div>
+      <div class="bridge-card">
+        <h4>Account Engagement+</h4>
+        <div class="bc-arrow">MCAE → MCN Interop</div>
+        <p>Adds MCN next-gen campaign and agentic capabilities alongside existing MCAE engagement workflows and CRM lead matching.</p>
+      </div>
+      <div class="bridge-card">
+        <h4>Personalization+</h4>
+        <div class="bc-arrow">Personalization → Agentforce</div>
+        <p>Layers Agentforce-driven orchestration parameters over base Salesforce Personalization decision matrices. Existing MCP customers get this at no additional cost.</p>
+      </div>
+      <div class="bridge-card">
+        <h4>Intelligence+</h4>
+        <div class="bc-arrow">Intelligence → Core AI Layer</div>
+        <p>Adds automated AI summaries and calculated paid media optimization points over core cross-channel reporting files. Includes legacy MCI access.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SHARED FOUNDATIONS
+══════════════════════════════════════════ -->
+<div class="foundations-section">
+  <div class="container">
+    <h2 class="section-title">Shared Foundations</h2>
+    <p style="text-align:center;color:rgba(255,255,255,0.6);font-size:13px;margin-bottom:28px;">Required infrastructure shared across all Agentforce Marketing products</p>
+    <div class="found-grid">
+      <div class="found-card">
+        <h5>Data 360 / Data Cloud</h5>
+        <ul>
+          <li>Unified Data Model</li>
+          <li>Identity Resolution</li>
+          <li>Calculated Insights</li>
+          <li>DMOs &amp; Segments</li>
+          <li>Activation Targets</li>
+          <li>Data Actions &amp; Streams</li>
+        </ul>
+      </div>
+      <div class="found-card">
+        <h5>Agentforce Runtime</h5>
+        <ul>
+          <li>Atlas Reasoning Engine</li>
+          <li>Trust Layer</li>
+          <li>Topics &amp; Actions</li>
+          <li>Agentforce Builder</li>
+          <li>MCP core runtime</li>
+          <li>200K Flex Credits allocated</li>
+        </ul>
+      </div>
+      <div class="found-card">
+        <h5>Slack Integration</h5>
+        <ul>
+          <li>Agentforce in Slack</li>
+          <li>Segment generation triggers</li>
+          <li>Campaign action commands</li>
+          <li>Journey status logging</li>
+          <li>Performance logs</li>
+        </ul>
+      </div>
+      <div class="found-card">
+        <h5>Salesforce Foundations</h5>
+        <ul>
+          <li>Data Cloud baseline on-ramp</li>
+          <li>Agentforce functional layer</li>
+          <li>CRM database basics</li>
+          <li>$0 core entitlement SKU</li>
+          <li>200K Flex Credits allocated</li>
+          <li>Applies to existing customer orgs</li>
+        </ul>
+      </div>
+      <div class="found-card">
+        <h5>API / Access Patterns</h5>
+        <ul>
+          <li>SFMC REST API</li>
+          <li>SFMC SOAP API</li>
+          <li>Data Cloud API</li>
+          <li>MCE MCP Server connection</li>
+          <li>Data translation execution vectors</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     MOUNTAIN FOOTER / CTA
+══════════════════════════════════════════ -->
+<div class="mountain-footer">
+  <!-- SVG mountain landscape matching site aesthetic -->
+  <svg class="mountain-svg" viewBox="0 0 1440 180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#EAF4FF"/>
+        <stop offset="100%" stop-color="#ffffff"/>
+      </linearGradient>
+    </defs>
+    <rect width="1440" height="180" fill="url(#skyGrad)"/>
+    <!-- Back mountains -->
+    <polygon points="0,180 0,100 120,40 240,90 360,20 480,70 600,10 720,60 840,5 960,55 1080,15 1200,65 1320,30 1440,75 1440,180" fill="#C8E6FF" opacity="0.5"/>
+    <!-- Mid mountains -->
+    <polygon points="0,180 0,140 180,70 360,120 540,50 720,110 900,45 1080,100 1260,60 1440,105 1440,180" fill="#A3D0F7" opacity="0.6"/>
+    <!-- Front hills -->
+    <polygon points="0,180 0,160 200,120 400,150 600,110 800,145 1000,108 1200,140 1440,115 1440,180" fill="#7AB8EE" opacity="0.4"/>
+    <!-- Green foliage base -->
+    <ellipse cx="100" cy="175" rx="80" ry="25" fill="#5BAD6F" opacity="0.5"/>
+    <ellipse cx="1350" cy="175" rx="90" ry="22" fill="#5BAD6F" opacity="0.5"/>
+    <ellipse cx="700" cy="178" rx="60" ry="18" fill="#4A9960" opacity="0.4"/>
+    <!-- Small butterfly dot -->
+    <circle cx="740" cy="120" r="3" fill="#FE9339" opacity="0.7"/>
+  </svg>
+  <div class="footer-cta-band">
+    <h2>Ready to take the next step?</h2>
+    <p>Connect with your Salesforce account team or Solutions Engineer to explore the right edition and add-ons for your business.</p>
+    <div class="cta-buttons">
+      <a class="btn-primary" href="#">Talk to an Expert</a>
+      <a class="btn-secondary" href="#">Compare All Editions</a>
+    </div>
+  </div>
+</div>
+
+<footer class="sf-footer">
+  <div class="sf-logo">salesforce</div>
+  <div class="disclaimer">
+    Agentforce Marketing · Editions &amp; Capabilities Reference · June 2026 · For internal SE use. Pricing and feature availability subject to change. Contact your account team for current pricing. ★ = Advanced Edition only.
+  </div>
+  <div>&#169; 2026 Salesforce, Inc.</div>
+</footer>
+
+</body>
+</html>
