@@ -58,6 +58,9 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Robo
 .chart-container:hover { background: #EAF5FE; box-shadow: 0 2px 6px rgba(1,118,211,0.2); }
 .chart-canvas { cursor: pointer; width: 100% !important; max-width: 100%; }
 .chart-container.chart-nofilter .chart-canvas { cursor: default; }
+.chart-container.chart-active { border: 2px solid #0176D3; background: #EAF5FE; box-shadow: 0 0 0 3px rgba(1,118,211,0.18); }
+.chart-active-label { display: none; font-size: 10px; font-weight: 700; color: #0176D3; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 8px; text-align: center; }
+.chart-container.chart-active .chart-active-label { display: block; }
 .chart-title { font-size: 13px; font-weight: 700; color: #032D60; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
 .chart-full { grid-column: 1 / -1; min-height: 180px !important; }
 .chart-full .chart-canvas { max-height: 140px !important; }
@@ -381,24 +384,28 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Robo
 
     <div class="charts-content">
       <div class="charts-grid">
-        <div class="chart-container">
-          <div class="chart-title">Projects by Stakeholder (Click to Filter)</div>
+        <div class="chart-container" id="container-stakeholderChart">
+          <div class="chart-title">Projects by Stakeholder <span style="font-weight:400;color:#706E6B;font-size:10px;">— click to filter</span></div>
           <canvas id="stakeholderChart" class="chart-canvas"></canvas>
+          <div class="chart-active-label" id="label-stakeholderChart">● Filter active — click segment to clear</div>
         </div>
 
-        <div class="chart-container">
-          <div class="chart-title">Status Distribution (Click to Filter)</div>
+        <div class="chart-container" id="container-statusChart">
+          <div class="chart-title">Status Distribution <span style="font-weight:400;color:#706E6B;font-size:10px;">— click to filter</span></div>
           <canvas id="statusChart" class="chart-canvas"></canvas>
+          <div class="chart-active-label" id="label-statusChart">● Filter active — click bar to clear</div>
         </div>
 
-        <div class="chart-container">
-          <div class="chart-title">Priority Breakdown (Click to Filter)</div>
+        <div class="chart-container" id="container-priorityChart">
+          <div class="chart-title">Priority Breakdown <span style="font-weight:400;color:#706E6B;font-size:10px;">— click to filter</span></div>
           <canvas id="priorityChart" class="chart-canvas"></canvas>
+          <div class="chart-active-label" id="label-priorityChart">● Filter active — click segment to clear</div>
         </div>
 
-        <div class="chart-container">
-          <div class="chart-title">Projects by Owner (Click to Filter)</div>
+        <div class="chart-container" id="container-ownerChart">
+          <div class="chart-title">Projects by Owner <span style="font-weight:400;color:#706E6B;font-size:10px;">— click to filter</span></div>
           <canvas id="ownerChart" class="chart-canvas"></canvas>
+          <div class="chart-active-label" id="label-ownerChart">● Filter active — click segment to clear</div>
         </div>
       </div>
 
@@ -410,9 +417,10 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Robo
       </div>
 
       <div class="charts-grid">
-        <div class="chart-container">
-          <div class="chart-title">Top Collaboration Groups (Click to Filter)</div>
+        <div class="chart-container" id="container-collabChart">
+          <div class="chart-title">Top Collaboration Groups <span style="font-weight:400;color:#706E6B;font-size:10px;">— click to filter</span></div>
           <canvas id="collabChart" class="chart-canvas"></canvas>
+          <div class="chart-active-label" id="label-collabChart">● Filter active — click bar to clear</div>
         </div>
 
         <div class="chart-container chart-nofilter">
@@ -1957,31 +1965,26 @@ function filterByChart(chartType, event) {
   event.stopPropagation();
 }
 
-// Dim non-selected segments/bars and expand selected by +5% offset/scale
 function updateChartSelection(chartId, selectedIndex) {
   const chart = chartInstances[chartId];
   if (!chart) return;
   const dataset = chart.data.datasets[0];
   const base = dataset._baseColors;
   const n = dataset.data.length;
+  const isPie = chart.config.type === 'doughnut' || chart.config.type === 'pie';
 
-  // Pie/doughnut: use offset array; bar: use alpha dimming
-  if (chart.config.type === 'doughnut' || chart.config.type === 'pie') {
-    dataset.backgroundColor = base.map((c, i) => i === selectedIndex ? c : hexToRgba(c, 0.28));
-    dataset.borderWidth = base.map((_, i) => i === selectedIndex ? 3 : 1);
-    dataset.borderColor = base.map((_, i) => i === selectedIndex ? '#fff' : 'rgba(255,255,255,0.3)');
-    // offset: selected pushes out ~8px, others pull in
-    chart.options.elements = chart.options.elements || {};
-    chart.options.elements.arc = chart.options.elements.arc || {};
+  if (isPie) {
+    dataset.backgroundColor = base.map((c, i) => i === selectedIndex ? c : hexToRgba(c, 0.18));
+    dataset.borderWidth = base.map((_, i) => i === selectedIndex ? 4 : 1);
+    dataset.borderColor = base.map((_, i) => i === selectedIndex ? '#fff' : 'rgba(255,255,255,0.15)');
     const offsets = Array(n).fill(0);
-    offsets[selectedIndex] = 8;
+    offsets[selectedIndex] = 14;
     dataset.offset = offsets;
     chart.options.hoverOffset = 0;
   } else {
-    // Bar chart: dim non-selected bars
-    dataset.backgroundColor = base.map((c, i) => i === selectedIndex ? c : hexToRgba(c, 0.28));
-    dataset.borderWidth = base.map((_, i) => i === selectedIndex ? 2 : 0);
-    dataset.borderColor = base.map((_, i) => i === selectedIndex ? darken(c => c, base[i]) : 'transparent');
+    dataset.backgroundColor = base.map((c, i) => i === selectedIndex ? c : hexToRgba(c, 0.18));
+    dataset.borderWidth = base.map((_, i) => i === selectedIndex ? 3 : 0);
+    dataset.borderColor = base.map((c, i) => i === selectedIndex ? c : 'transparent');
   }
   chart.update('none');
 }
@@ -1991,9 +1994,10 @@ function clearChartSelection(chartId) {
   if (!chart) return;
   const dataset = chart.data.datasets[0];
   const base = dataset._baseColors;
+  const isPie = chart.config.type === 'doughnut' || chart.config.type === 'pie';
   dataset.backgroundColor = [...base];
-  dataset.borderWidth = chart.config.type === 'doughnut' || chart.config.type === 'pie' ? 2 : 0;
-  dataset.borderColor = chart.config.type === 'doughnut' || chart.config.type === 'pie' ? '#fff' : 'transparent';
+  dataset.borderWidth = isPie ? 2 : 0;
+  dataset.borderColor = isPie ? '#fff' : 'transparent';
   if (dataset.offset) dataset.offset = Array(dataset.data.length).fill(0);
   chart.options.hoverOffset = 4;
   chart.update('none');
@@ -2018,10 +2022,20 @@ function syncChartsToFilters() {
 
   function setSelection(chartId, labelArray, activeValue) {
     if (!chartInstances[chartId]) return;
-    if (!activeValue) { clearChartSelection(chartId); return; }
+    const container = document.getElementById('container-' + chartId);
+    if (!activeValue) {
+      clearChartSelection(chartId);
+      if (container) container.classList.remove('chart-active');
+      return;
+    }
     const idx = labelArray.indexOf(activeValue);
-    if (idx === -1) { clearChartSelection(chartId); return; }
+    if (idx === -1) {
+      clearChartSelection(chartId);
+      if (container) container.classList.remove('chart-active');
+      return;
+    }
     updateChartSelection(chartId, idx);
+    if (container) container.classList.add('chart-active');
   }
 
   setSelection('stakeholderChart', chartInstances['stakeholderChart'] ? chartInstances['stakeholderChart'].data.labels : [], stakeholderVal);
